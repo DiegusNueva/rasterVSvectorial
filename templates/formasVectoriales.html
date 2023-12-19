@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formas vectoriales animadas</title>
+    <!-- Importación mediante CDN de la librería GSAP (GreenSock Animation Platform) -->
     <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
     <style>
         .svg-basic {
@@ -30,17 +31,21 @@
             d="M573.888254,77.3 C564.488254,82.2 536.888254,68.3 552.888254,40.3 C568.888254,12.3 583.888254,33.3 593.888254,31.3 C603.888254,29.3 603.888254,4.3 632.888254,11.3 C661.888254,18.3 662.888254,49.3 652.888254,64.3 C642.888254,79.3 617.888254,54.3 573.888254,77.3 Z" />
     </svg>
     <script>
-        var shapes = "rect, circle, polygon, line, ellipse, polyline, path",
+
+        // Definición de formas y línea de tiempo
+        const shapes = "rect, circle, polygon, line, ellipse, polyline, path",
             tl = gsap.timeline({ repeat: 3, yoyo: true });
 
+        // Animación de dibujo de las formas
         tl.fromTo(shapes, { drawSVG: "100%" }, { duration: 1, drawSVG: "50% 50%", stagger: 0.1 })
             .fromTo(shapes, { drawSVG: "0%" }, { duration: 0.1, drawSVG: "10%", immediateRender: false }, "+=0.1")
             .to(shapes, { duration: 1, drawSVG: "90% 100%", stagger: 0.5 })
             .to(shapes, { duration: 1, rotation: 360, scale: 0.5, drawSVG: "100%", stroke: "white", strokeWidth: 6, transformOrigin: "50% 50%" })
             .to(shapes, { duration: 0.5, stroke: "blue", scale: 1.5, opacity: 0, stagger: 0.2 })
 
-        /* --- Controles --- */
+        // Controles
         GSDevTools.create({ minimal: true });
+        
     </script>
 </body>
 
