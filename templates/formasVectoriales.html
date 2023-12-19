@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formas vectoriales animadas</title>
+    <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+    <style>
+        .svg-basic {
+            stroke: #dc0028;
+            stroke-width: 6px;
+            fill: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <svg id="svg-files" xmlns="http://www.w3.org/2000/svg" width="1000" height="150" viewBox="0 0 900 100"
+        preserveAspectRatio=xMidYmid>
+        <title>SVG Files Basic Forms</title>
+        <desc>Basic forms</desc>
+        <rect class="svg-basic" x="10" y="1" width="90" height="90" />
+        <circle class="svg-basic" cx="159.5" cy="45.3" r="45" />
+        <polygon class="svg-basic"
+            points="269.5 0.3 284.5 30.3 318.5 35.3 293.5 57.3 299.5 89.3 269.5 74.3 238.5 89.3 244.5 57.3 220.5 34.3 253.5 30.3" />
+        <line class="svg-basic" x1="330.5" y1="93.3" x2="405.5" y2="4.3" />
+        <polyline class="svg-basic" points="429 73.3 429 22.3 476 63.3 476 29.3 502 44.1 523 10" />
+        <path class="svg-basic"
+            d="M573.888254,77.3 C564.488254,82.2 536.888254,68.3 552.888254,40.3 C568.888254,12.3 583.888254,33.3 593.888254,31.3 C603.888254,29.3 603.888254,4.3 632.888254,11.3 C661.888254,18.3 662.888254,49.3 652.888254,64.3 C642.888254,79.3 617.888254,54.3 573.888254,77.3 Z" />
+    </svg>
+    <script>
+        var shapes = "rect, circle, polygon, line, ellipse, polyline, path",
+            tl = gsap.timeline({ repeat: 3, yoyo: true });
+
+        tl.fromTo(shapes, { drawSVG: "100%" }, { duration: 1, drawSVG: "50% 50%", stagger: 0.1 })
+            .fromTo(shapes, { drawSVG: "0%" }, { duration: 0.1, drawSVG: "10%", immediateRender: false }, "+=0.1")
+            .to(shapes, { duration: 1, drawSVG: "90% 100%", stagger: 0.5 })
+            .to(shapes, { duration: 1, rotation: 360, scale: 0.5, drawSVG: "100%", stroke: "white", strokeWidth: 6, transformOrigin: "50% 50%" })
+            .to(shapes, { duration: 0.5, stroke: "blue", scale: 1.5, opacity: 0, stagger: 0.2 })
+
+        /* --- Controles --- */
+        GSDevTools.create({ minimal: true });
+    </script>
+</body>
+
+</html>
